@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>BarrioCOVID</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/registro.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">BarrioCOVID</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Inicio
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Registro</h2>
+      <p class="lead">Introduce tus datos para completar el registro de tu cuenta.</p>
+    </div>
+
+    <div class="row">
+      <div>
+        <h4 class="mb-3">Datos personales</h4>
+        <form class="needs-validation" novalidate="">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="firstName">Nombre</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Debe introducir un nombre.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastName">Apellidos</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+              <div class="invalid-feedback">
+                Debe introducir los apellidos
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+          <div class="col-12 mb-3">
+            <label for="email">Correo electrónico</label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com">
+            <div class="invalid-feedback">
+              Introduzca un correo electrónico válido.
+            </div>
+          </div>
+          
+          <div class="col-12 mb-3">
+            <label for="inputPassword">Contraseña</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+            <div class="invalid-feedback">
+              Por favor introduzca una contraseña con al menos 1 dígito y 1 mayúscula.
+            </div>
+          </div>
+        
+
+          <div class="mb-3 col-12">
+            <label for="phone">Número de teléfono:</label>
+            <input type="tel" id="phone" name="phone" placeholder="XXXXXXXXX">
+          </div>
+
+          <div class="mb-3 col-12">
+            <label for="address">Dirección</label>
+            <input type="text" class="form-control" id="address" placeholder="Calle, avenida, número, piso, puerta...">
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="state">Ciudad</label>
+              <input type="text" class="form-control" id="city" placeholder="Ciudad">
+              <div class="invalid-feedback">
+                Introduzca una ciudad válida.
+              </div>
+            </div>
+            <div class="col-md-3 mb-3">
+              <label for="zip">Código postal</label>
+              <input type="text" class="form-control" id="zip" placeholder="" required="">
+              <div class="invalid-feedback">
+                Código postal requerido.
+              </div>
+            </div>
+
+          </div>
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Tipo de usuario</label>
+            <select class="custom-select d-block w-100" id="user" required="">
+              <option selected> <span>Seleccione...</span></option>
+              <option>Vendedor</option>
+              <option>Comprador</option>
+              <option>Voluntario</option>
+            </select>
+            <div class="invalid-feedback">
+              Por favor seleccione el uso que le va a dar a la plataforma.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label for="country">Tipo de tienda (vendedor)</label>
+            <select class="custom-select d-block w-100" id="user" required="">
+              <option selected> <span>Seleccione...</span></option>
+              <option>Supermercado</option>
+              <option>Pescadería</option>
+              <option>Carnicería</option>
+              <option>Etc...</option>
+            </select>
+            <div class="invalid-feedback">
+              Por favor seleccione el tipo de tienda.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="lastName">DNI (voluntario)</label>
+          <input type="text" class="form-control" id="dni" placeholder="" value="" required="">
+          <div class="invalid-feedback">
+            Introduzca su DNI
+          </div>
+        </div>
+      </div>
+          
+          <a class="btn btn-lg btn-primary btn-block" href="comprador.html">Enviar</a>
+          <button class="btn btn-primary btn-lg btn-block" type="reset" id="reset">Restablecer</button>
+        </form>
+      </div>
+    </div>
+
+    
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; BarrioCOVID 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
