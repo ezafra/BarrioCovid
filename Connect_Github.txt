@@ -1,0 +1,22 @@
+$git init
+
+# Crear fichero y añadirlo a repositorio local con el siguiente comando
+$git add .
+
+# Hacer commit 
+$git commit -m "comentario"
+
+# Conectarse al repositorio remoto de Github
+$git remote add origin https://github.com/ezafra/BarrioCovid.git
+
+#Crear nueva branch para no sobreescribir nada
+$git branch nuevabranch
+$git checkout nuevabranch
+
+#Hacer push de la branch al repositorio
+$git push origin nuevabranch
+
+#A partir de ahí estamos trabajando sobre la nuevabranch, cada vez que se cambie algo repetir
+$git add . (el punto se puede sustituir por el path al fichero que se quiere añadir)
+$git commit -m "comentario"
+$git push origin nuevabranch
