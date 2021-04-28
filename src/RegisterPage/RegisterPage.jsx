@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Menu } from '../Menu/Menu'
+import { Menu } from '../Menu/Menu';
+import ToggleButton from 'react-toggle-button';
 
 import { userActions } from '../_actions';
 
@@ -17,7 +18,7 @@ class RegisterPage extends React.Component {
                 password: '',
                 dni:'',
                 direccion:'',
-                isSeller: true
+                isSeller: false
             },
             submitted: false
         };
@@ -38,13 +39,13 @@ class RegisterPage extends React.Component {
         });
     }
 
-    handleSeller(event){
-        const { name, value } = event.target;
+    handleSeller(value){
         const { user } = this.state;
+        let nValue = !value;
         this.setState({
             user: {
                 ...user,
-                [name]: !value
+                isSeller: nValue,
             }
         })
     }
@@ -115,7 +116,7 @@ class RegisterPage extends React.Component {
                     </div>
                     <div className={'form-group' + (submitted  ? ' has-error' : '')}>
                         <label htmlFor="isSeller">Es vendedor</label>
-                        <input type="button" className="form-control" name="isSeller" value={user.isSeller} onChange={this.handleSeller} />
+                        <ToggleButton className="form-control" name="isSeller" value={user.isSeller || false} onToggle={this.handleSeller} />
                         
                     </div>
                     <div className="form-group">
@@ -135,7 +136,7 @@ class RegisterPage extends React.Component {
 function mapState(state) {
     const { registering } = state.registration;
     return { registering };
-}
+} 
 
 const actionCreators = {
     register: userActions.register
