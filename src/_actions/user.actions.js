@@ -11,7 +11,7 @@ export const userActions = {
     delete: _delete
 };
 
-function login(correo, password, isSeller) {
+function login(correo, password) {
     return dispatch => {
         dispatch(request({ correo }));
 
@@ -19,7 +19,7 @@ function login(correo, password, isSeller) {
             .then(
                 user => { 
                     dispatch(success(user));
-                    if (user.isSeller== "false"){
+                    if (!user.isSeller){
                         history.push('/');
                     }
                     else {history.push('/vendedor')}
