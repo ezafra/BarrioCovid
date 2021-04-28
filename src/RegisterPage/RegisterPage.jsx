@@ -18,6 +18,7 @@ class RegisterPage extends React.Component {
                 password: '',
                 dni:'',
                 direccion:'',
+                genero: '',
                 isSeller: false
             },
             submitted: false
@@ -117,8 +118,16 @@ class RegisterPage extends React.Component {
                     <div className={'form-group' + (submitted  ? ' has-error' : '')}>
                         <label htmlFor="isSeller">Es vendedor</label>
                         <ToggleButton className="form-control" name="isSeller" value={user.isSeller || false} onToggle={this.handleSeller} />
-                        
                     </div>
+                    {user.isSeller == true && 
+                        <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
+                            <label htmlFor="genero">Genero de Producto</label>
+                            <input type="genero" className="form-control" name="genero" value={user.genero} onChange={this.handleChange} />
+                            {submitted && !user.password &&
+                                <div className="help-block">El genero es obligatorio</div>
+                            }
+                        </div>
+                    }
                     <div className="form-group">
                         <button className="btn btn-primary" >Registrar</button>
                         {registering && 
