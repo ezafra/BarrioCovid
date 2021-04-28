@@ -24,6 +24,7 @@ class RegisterPage extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSeller = this.handleSeller.bind(this);
     }
 
     handleChange(event) {
@@ -35,6 +36,17 @@ class RegisterPage extends React.Component {
                 [name]: value
             }
         });
+    }
+
+    handleSeller(event){
+        const { name, value } = event.target;
+        const { user } = this.state;
+        this.setState({
+            user: {
+                ...user,
+                [name]: !value
+            }
+        })
     }
 
     handleSubmit(event) {
@@ -103,7 +115,7 @@ class RegisterPage extends React.Component {
                     </div>
                     <div className={'form-group' + (submitted  ? ' has-error' : '')}>
                         <label htmlFor="isSeller">Es vendedor</label>
-                        <input type="password" className="form-control" name="isSeller" value={user.isSeller} onChange={this.handleChange} />
+                        <input type="button" className="form-control" name="isSeller" value={user.isSeller} onChange={this.handleSeller} />
                         
                     </div>
                     <div className="form-group">
