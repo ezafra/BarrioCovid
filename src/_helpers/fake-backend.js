@@ -1,5 +1,6 @@
 // array in local storage for registered users
 let users = JSON.parse(localStorage.getItem('users')) || [];
+let products = JSON.parse(localStorage.getItem('products')) || [];
     
 export function configureFakeBackend() {
     let realFetch = window.fetch;
@@ -117,6 +118,21 @@ export function configureFakeBackend() {
                         // return 401 not authorised if token is null or invalid
                         reject('Unauthorised');
                     }
+
+                    return;
+                }
+
+                //Create product
+                if (url.endsWith('/products/create') && opts.method === 'POST') {
+                     // get new product object from post body
+                     let newProduct = JSON.parse(opts.body);
+                     // save new product
+                    newProduct.id = products.length ? Math.max(...products.map(product => product.id)) + 1 : 1;
+                    products.push(newProduct);
+                    localStorage.setItem('products', JSON.stringify(products));
+
+                    // respond 200 OK
+                    resolve({ ok: true, text: () => Promise.resolve() });
 
                     return;
                 }
