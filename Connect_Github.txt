@@ -9,6 +9,10 @@ $git commit -m "comentario"
 # Conectarse al repositorio remoto de Github
 $git remote add origin https://github.com/ezafra/BarrioCovid.git
 
+# Para cambiar de branch del repositorio github
+$git branch -a (lista las branchs)
+$git branch remotes/origin/branchquequeramos
+
 #Crear nueva branch para no sobreescribir nada
 $git branch nuevabranch
 $git checkout nuevabranch
