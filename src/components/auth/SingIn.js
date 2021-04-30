@@ -7,7 +7,8 @@ import {singIn} from "../../store/actions/authActions"
 export class SingIn extends Component  {
     state={
         email:"",
-        password:""
+        password:"", 
+        isLogged:false
     }
 
     handleChange= (e) => {
@@ -17,6 +18,8 @@ export class SingIn extends Component  {
     }
 
     handleSubmit= (e) => {
+        this.state.isLogged=true;
+        console.log(this.state);
         e.preventDefault();
         this.props.singIn(this.state)
 

@@ -10,7 +10,7 @@ export class SingUp extends Component  {
         password:"",
         nombre:"",
         apellidos:"",
-        isSeller:""
+        isSeller: true
     }
 
     handleChange= (e) => {
@@ -21,8 +21,8 @@ export class SingUp extends Component  {
 
     handleSubmit= (e) => {
         e.preventDefault();
-        console.log(this.state)
-        this.props.singUp(this.state)
+        console.log(this.state);
+        this.props.singUp(this.state);
     }
 
 

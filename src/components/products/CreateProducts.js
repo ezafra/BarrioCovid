@@ -11,9 +11,11 @@ export class CreateProduct extends Component  {
         price:"",
         description:"",
         tienda:"",
-        id:""
+        id:"",
+        vendorId:""
         
     }
+    
 
     handleChange= (e) => {
         this.setState({
@@ -21,14 +23,21 @@ export class CreateProduct extends Component  {
         })
     }
 
-    handleSubmit= (e) => {
+    handleSubmit=(e) => {
         e.preventDefault();
         console.log(this.state)
-        this.props.createProduct(this.state)
+        //console.log(user);
+        this.setState({
+            ...this.state
+        })
+        this.props.createProduct(this.state);
+        
     }
 
 
     render(){
+        /* const {user} = this.props;
+        console.log(user); */
         return(
             <div className="container">
 
