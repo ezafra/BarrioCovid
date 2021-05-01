@@ -1,14 +1,12 @@
 package es.upm.dit.isst.barrio.dao;
 
-import java.util.List;
 import java.util.ArrayList;
-
+import java.util.List;
 
 import org.hibernate.Session;
 
 import es.upm.dit.isst.barrio.model.Producto;
-import es.upm.dit.isst.barrio.dao.SessionFactoryService;
-import es.upm.dit.isst.barrio.dao.ProductoDAOImplementation;
+import es.upm.dit.isst.barrio.model.Tienda;
 
 
 public class ProductoDAOImplementation implements productoDAO {
@@ -23,68 +21,68 @@ public class ProductoDAOImplementation implements productoDAO {
 	}
 
 	@Override
-	public Producto create(Producto Producto) {
+	public Producto create(Producto producto) {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
 		
 		try {
-			session.save(Producto);
+			session.save(producto);
 		} catch(Exception e) {
-			Producto = null;
+			producto = null;
 		}
 		session.getTransaction().commit();
 		session.close();
-		return Producto;
+		return producto;
 	}
 
 	@Override
 	public Producto read (String email) {
 	  Session session = SessionFactoryService.get().openSession();
 	  session.beginTransaction();
-	  Producto Producto = session.get(Producto.class, email);
+	  Producto producto = session.get(Producto.class, email);
 	 // operaciones
 	  session.getTransaction().commit();
 	  session.close();
-	  return Producto;
+	  return producto;
 	}
 
 	@Override
-	public Producto update(Producto Producto) {
+	public Producto update(Producto producto) {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-		session.saveOrUpdate(Producto);
+		session.saveOrUpdate(producto);
 		session.getTransaction().commit();
 		session.close();
-		return Producto;
+		return producto;
 	}
 
 	@Override
-	public Producto delete(Producto Producto) {
+	public Producto delete(Producto producto) {
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-		session.delete(Producto);
+		session.delete(producto);
 		session.getTransaction().commit();
 		session.close();
-		return Producto;
+		return producto;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Producto> readAll() {
-		List<Producto> Productos = new ArrayList<Producto> ();
+		List<Producto> productos = new ArrayList<Producto> ();
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-		Productos.addAll(session.createQuery("From Producto").list());
+		productos.addAll(session.createQuery("From Producto").list());
 		session.getTransaction().commit();
 		session.close();
-		return Productos;
+		return productos;
 	}
 
 	@Override
-	public List<Producto> readAll(String vendedor) {
+	public List<Producto> readAll(Tienda tienda) {
 		List<Producto> res = new ArrayList<Producto> ();
 		for (Producto Producto : this.readAll())
-			if (Producto.getnTienda().getPropietario().getEmail().equals(vendedor))
+			if (Producto.getnTienda().equals(tienda))
 				res.add(Producto);
 		return res;
 	}

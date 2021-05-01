@@ -21,11 +21,6 @@ public class Pedido implements Serializable{
 	private String descripcion;
 	
 	
-	public Pedido() {
-		//this.productos = new ArrayList<Producto>();
-	}
-
-
 	public Usuario getComprador() {
 		return comprador;
 	}
@@ -41,7 +36,7 @@ public class Pedido implements Serializable{
 	}
 
 
-	public void setVendedor(Tienda tienda) {
+	public void setTienda(Tienda tienda) {
 		this.tienda = tienda;
 	}
 
@@ -91,12 +86,9 @@ public class Pedido implements Serializable{
 	}
 
 
-	public void setDescripción(String descripción) {
-		this.descripcion = descripción;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
-	
-	
-	
 
 
 	@Override
