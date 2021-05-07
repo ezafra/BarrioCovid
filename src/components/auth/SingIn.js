@@ -8,7 +8,8 @@ export class SingIn extends Component  {
     state={
         email:"",
         password:"", 
-        isLogged:false
+        isLogged:false,
+        isSeller:false
     }
 
     handleChange= (e) => {

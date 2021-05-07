@@ -1,7 +1,7 @@
 
 const initState = {}
 
-const authReducer = (state = initState, action) => {
+const authReducer = (state = initState , action) => {
     switch(action.type){
         case "LOGING_ERROR":
             console.log("login error");
@@ -14,10 +14,16 @@ const authReducer = (state = initState, action) => {
             console.log(state);
             return {
                 ...state,
-                
+                isLogged:true,
                 authError: null
             }
-        case "SINGOUT_SUCCESS":
+
+
+
+
+
+
+        case "LOGOUT_SUCCESS":
             console.log(state);
             console.log("logout success");
             
@@ -26,6 +32,20 @@ const authReducer = (state = initState, action) => {
                 ...state, 
                 isLogged: false
             }
+        case "LOGOUT_ERROR":
+            console.log("logout error");
+            return {
+                ...state,
+                loggoutError:true
+            }
+
+
+
+
+
+
+
+
         
         case "SINGUP_SUCCESS":
             console.log("singup success");

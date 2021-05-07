@@ -11,10 +11,11 @@ export const singIn = (credentials) => {
             credentials.email,
             credentials.password
         )
-        firestore.collection("registered").add({
-            email: credentials.email,
-            contraseña: credentials.password,
-            isLogged: credentials.isLogged
+        firestore.collection("registrados").doc("OUYp7kRnDqB2jzDgKUFj").update({
+            
+            isLogged: true,
+            
+
             
         }).then(()=>{
             dispatch({type:"LOGIN_SUCCESS"})
@@ -30,13 +31,24 @@ export const singOut = () => {
         const firebase= getFirebase();
         const firestore= getFirestore()
 
-        firebase.auth().signOut().then(()=>{
-            dispatch({type: "SINGOUT_SUCCESS"})
+        firebase.auth().signOut()
+        console.log("se ha ejecutao la funcion")
+        firestore.collection("registrados").doc("OUYp7kRnDqB2jzDgKUFj").update({
+            
+            isLogged: false,
+            
 
-        })
+            
+        }).then(()=>{
+            dispatch({type: "LOGOUT_SUCCESS"})
+
+        }).catch((err) => {
+            dispatch ({type: "LOGOUT_ERROR"})
+        });
         
        /*  firestore.collection("registered").doc(credenciales.id).delete() */
         
+
     }
 
 }
@@ -51,12 +63,13 @@ export const singUp = (newUser) => {
             newUser.password
         )
         console.log(newUser.nombre);
-        firestore.collection("users").add({
+        firestore.collection("registrados").add({
             nombre: newUser.nombre,
             apellidos: newUser.apellidos,
             email: newUser.email,
             contraseña: newUser.password,
             isSeller: newUser.isSeller,
+            isLogged:false
             
 
         }).then(() =>{

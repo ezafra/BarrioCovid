@@ -20,7 +20,7 @@ const NotSignedLinks = (props) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        singOut: ((credenciales)=> dispatch(singOut()))
+        singOut: ()=> dispatch(singOut())
     }
 }
 const mapStateToProps = (state)=> {

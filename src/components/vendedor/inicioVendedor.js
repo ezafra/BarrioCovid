@@ -22,7 +22,7 @@ class inicioVendedor extends Component{
                 
                 
                 <p>
-                    <Link to="/pedidosVendedor">Ver los pedidos </Link>
+                    <Link to="/dashboardVendedor">Ver los pedidos </Link>
                 </p>
                 <p>
                     <Link to="/historialVendedor">Historial de Pedidos</Link>

@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { Link } from "react-router-dom";
 import {firestoreConnect} from "react-redux-firebase"
 import { compose} from "redux"
+import VendedorSummary from "../vendedor/VendedorSummary";
 
  class DashboardUser extends Component{
     render(){
@@ -12,20 +13,50 @@ import { compose} from "redux"
         
         //asignamos a una constante que creamos el valor de las props, que mapStateToProps ha convertido con los parametros que llegan del stado proporcionado por el Product Reducer
 
+        function sleep(delay) {
+            var start = new Date().getTime();
+            while (new Date().getTime() < start + delay);
+        }
+        
+        
         const {productos} = this.props;
         const {user } = this.props;
-        console.log(user);
+        const {users} = this.props;
+        console.log(this.props);
+        console.log(users);
+        
+        let vendedores = [
+            {apellidos: "jajajajaja", nombre: "Paquito" , email: "ñlaskjdf@al.skdf.com", isSeller:true},
+            {apellidos: "jajajajaja2", nombre: "Paquito2" , email: "sdfdsñlaskjdf@al.skdf.com", isSeller:true}
+        ]
+        try{
+            vendedores = users.filter(usuarios => usuarios.isSeller === "true");
+            console.log(vendedores)
+        }catch(e){
+            console.log(e)
+            vendedores = [
+                {apellidos: "jajajajaja", nombre: "Paquito" , email: "ñlaskjdf@al.skdf.com", isSeller:true},
+                {apellidos: "jajajajaja2", nombre: "Paquito2" , email: "sdfdsñlaskjdf@al.skdf.com", isSeller:true}
+            ]
+        }
         
 
         
 
         return(
+        
         <div className="DashboardUser container">
             <div className="row">
-            <h3>Esta es la descripcion de la aplicacion</h3>
+            <h3>Señor {user.nombre}, esta es una lista de los establecimientos disponibles: </h3>
                 <div className="col s12 m6">
-                    <Link to="/createProduct">Esta es una lista de los vendedores disponibles </Link>
-                    
+                
+                {vendedores.length > 1  && vendedores.map(user =>{
+                return (
+                    <VendedorSummary user={user}/>
+                )
+                
+            })}
+                                      
                     
                     
                 </div>
@@ -39,11 +70,10 @@ import { compose} from "redux"
 }
 //para el estado del store a props de este component
 const mapStateToProps = (state) => {
-    
-    console.log(state);
+
     return{
         productos : state.firestore.ordered.productos,
-        users: state.firestore.ordered.users,
+        
         registered: state.firestore.ordered.registered
     }
 
@@ -55,7 +85,7 @@ export default compose(
     connect (mapStateToProps),
     firestoreConnect([
         {collection: "productos"},
-        {collection: "users"},
+        
         {collection: "registered"}
     ])
 )(DashboardUser)

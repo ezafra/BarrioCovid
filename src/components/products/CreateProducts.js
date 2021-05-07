@@ -6,17 +6,24 @@ import { createProduct} from "../../store/actions/productActions"
 
 
 export class CreateProduct extends Component  {
-    state={
-        productName: "",
-        price:"",
-        description:"",
-        tienda:"",
-        id:"",
-        vendorId:""
-        
+    constructor(props){
+        super(props);
+        this.state={
+            productName: "",
+            price:"",
+            description:"",
+            tienda:"",
+            id:"",
+            vendorId:"cTJA2hE47W0Kw9JiTQFD"
+            
+        }
+
     }
     
-
+    
+    
+    
+    
     handleChange= (e) => {
         this.setState({
             [e.target.id]: e.target.value
@@ -25,19 +32,44 @@ export class CreateProduct extends Component  {
 
     handleSubmit=(e) => {
         e.preventDefault();
-        console.log(this.state)
+        const {registered} = this.props;
+
+        
         //console.log(user);
         this.setState({
-            ...this.state
+            ...this.state,
+            vendorId: registered[0].id
+        
         })
+        console.log(this.state)
         this.props.createProduct(this.state);
         
     }
-
+    
 
     render(){
+        const {registered} = this.props;
+        console.log(this.props);
+        
+        
         /* const {user} = this.props;
         console.log(user); */
+
+        /* function sleep(delay) {
+            var start = new Date().getTime();
+            while (new Date().getTime() < start + delay);
+        }
+        
+        try{
+            const {registered} = this.props;
+            const user = registered.find(element => element.isLogged==false);
+            console.log(user);
+            console.log(user.id);
+        }catch(e){ */
+            //sleep(3000);
+            //const user = registered.find(element => element.isLogged);
+            //console.log(user);
+        //}
         return(
             <div className="container">
 
@@ -87,9 +119,18 @@ const mapDispatchToProps = (dispatch) => {
     return {
         createProduct: (producto) => dispatch(createProduct(producto))
     }
+}
 
+const mapStateToProps = (state) => {
+    
+    console.log(state);
+    return{
+        
+        
+        registered: state.firestore.ordered.registered
+    }
 
 }
 
 
-export default connect(null, mapDispatchToProps)(CreateProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProduct)

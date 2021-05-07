@@ -10,17 +10,20 @@ export class SingUp extends Component  {
         password:"",
         nombre:"",
         apellidos:"",
-        isSeller: true
+        isSeller: true,
+        
     }
 
     handleChange= (e) => {
         this.setState({
             [e.target.id]: e.target.value
+            
         })
     }
 
     handleSubmit= (e) => {
         e.preventDefault();
+        
         console.log(this.state);
         this.props.singUp(this.state);
     }
@@ -57,6 +60,7 @@ export class SingUp extends Component  {
                         <label htmlFor="isSeller">isSeller</label>
                         <input type="boolean" id="isSeller" onChange={this.handleChange}/>
                     </div>
+                    
 
                     <div className="input-field">
                         <button className="btn pink">Registrarse</button>

@@ -13,25 +13,21 @@ import { compose} from "redux"
         //asignamos a una constante que creamos el valor de las props, que mapStateToProps ha convertido con los parametros que llegan del stado proporcionado por el Product Reducer
 
         const {productos} = this.props;
-        const {users} = this.props;
+        console.log(productos);
+        
         const {user} = this.props;
         console.log(user);
         
-        //const {user } = users.find(element => element.isLogged);
-        //console.log(user);
-        
-        
-
-        
-
         return(
         <div className="DashboardVendedor container">
             <div className="row">
-            <h3>Esta es la descripcion de la aplicacion</h3>
+                
+            <h3>Hola señor {user.nombre}, esta es una lista de sus productos en venta</h3>
                 <div className="col s12 m6">
-                    <Link to="/createProduct" user={user}>Crear producto </Link>
                     
-                    <ProductList productos={productos}/>
+                    <Link to="/createProduct" user={user} >Crear producto </Link>
+                    
+                    <ProductList productos={productos} user={user}/>
                     
                 </div>
 
@@ -43,7 +39,7 @@ import { compose} from "redux"
     }
 }
 //para el estado del store a props de este component
-const mapStateToProps = (state) => {
+/* const mapStateToProps = (state) => {
     
     // console.log(state);
     return{
@@ -52,15 +48,8 @@ const mapStateToProps = (state) => {
         registered: state.firestore.ordered.registered
     }
 
-}
+} */
 
 
 //conecta DashboardVendedor al store creado en el reducer de productos que es lo que queremos mostrar
-export default compose(
-    connect (mapStateToProps),
-    firestoreConnect([
-        {collection: "productos"},
-        {collection: "users"},
-        {collection: "registered"}
-    ])
-)(DashboardVendedor)
+export default DashboardVendedor
