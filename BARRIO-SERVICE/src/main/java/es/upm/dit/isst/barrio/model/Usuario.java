@@ -22,7 +22,7 @@ public class Usuario implements Serializable{
 	
 	
 	public Usuario() {
-		this.pedidos=new ArrayList<Pedido>();
+		this.pedidos = new ArrayList<Pedido>();
 	}
 
 	public String getEmail() {

@@ -82,7 +82,7 @@ public class ProductoDAOImplementation implements productoDAO {
 	public List<Producto> readAll(Tienda tienda) {
 		List<Producto> res = new ArrayList<Producto> ();
 		for (Producto Producto : this.readAll())
-			if (Producto.getnTienda().equals(tienda))
+			if (Producto.getTienda().equals(tienda))
 				res.add(Producto);
 		return res;
 	}

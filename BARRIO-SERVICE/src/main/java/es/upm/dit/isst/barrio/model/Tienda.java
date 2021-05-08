@@ -12,12 +12,20 @@ public class Tienda implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	//private String emailPropietario
 	private Usuario propietario;
 	private String direccion;
 	private String nombre;
 	private String genero;
 	private List<Producto> productos;
 	
+	
+//	public String getEmailPropietario() {
+//		return emailPropietario;
+//	}
+//	public void setEmailPropietario(Usuario propietario) {
+//		this.emailPropietario = propietario.getEmail();
+//	}
 	public Usuario getPropietario() {
 		return propietario;
 	}

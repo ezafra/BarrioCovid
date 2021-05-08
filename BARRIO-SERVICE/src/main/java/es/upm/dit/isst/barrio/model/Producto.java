@@ -10,20 +10,20 @@ public class Producto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Tienda nTienda;
+	private Tienda tienda;
 	@Id
-	private String nombre;
+	private String nombre;   //Podría ser un problema para identificar dos objetos iguales (mismo nombre) de tiendas diferentes no?
 	private double precio;
 	private int cantidad;
 	
 	public Producto() {}
 
-	public Tienda getnTienda() {
-		return nTienda;
+	public Tienda getTienda() {
+		return tienda;
 	}
 
-	public void setnVendedor(Tienda nTienda) {
-		this.nTienda = nTienda;
+	public void setTienda(Tienda tienda) {
+		this.tienda = tienda;
 	}
 
 	public String getNombre() {
@@ -80,7 +80,7 @@ public class Producto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Producto [nTienda=" + nTienda + ", nombre=" + nombre + ", precio=" + precio
+		return "Producto [Tienda=" + tienda.getNombre() + ", nombre=" + nombre + ", precio=" + precio
 				+ ", cantidad=" + cantidad + "]";
 	}
 	

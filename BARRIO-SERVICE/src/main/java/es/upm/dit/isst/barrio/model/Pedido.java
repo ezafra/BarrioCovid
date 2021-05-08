@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -11,16 +13,23 @@ public class Pedido implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO) long id;
+
 	private Usuario comprador;
 	private Tienda tienda;
+	private Usuario voluntario;
 	private List<Producto> productos;
 	private double precio;
 	private String Fecha;
 	private int estado;
 	private String descripcion;
+	private boolean aDomicilio;  //Ponemos esto para indicar que es un pedido a domicilio?
 	
 	
+	public long getId() {
+		return id;
+	}
 	public Usuario getComprador() {
 		return comprador;
 	}
@@ -28,6 +37,15 @@ public class Pedido implements Serializable{
 
 	public void setComprador(Usuario comprador) {
 		this.comprador = comprador;
+	}
+	
+	public Usuario getVoluntario() {
+		return voluntario;
+	}
+
+
+	public void setVoluntario(Usuario voluntario) {
+		this.voluntario = voluntario;
 	}
 
 
@@ -88,6 +106,14 @@ public class Pedido implements Serializable{
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public boolean getADomicilio(){
+		return aDomicilio;
+	}
+	
+	public void setADomicilio(boolean aDomicilio){
+		this.aDomicilio = aDomicilio;
 	}
 
 
