@@ -20,10 +20,6 @@ public class Usuario implements Serializable{
 	private List<Pedido> pedidos;
 	private boolean esVendedor;
 	
-	
-	public Usuario() {
-		this.pedidos = new ArrayList<Pedido>();
-	}
 
 	public String getEmail() {
 		return email;

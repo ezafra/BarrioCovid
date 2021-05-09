@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Tienda implements Serializable {
@@ -12,7 +13,7 @@ public class Tienda implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	//private String emailPropietario
+	@OneToOne(mappedBy = "tienda")
 	private Usuario propietario;
 	private String direccion;
 	private String nombre;

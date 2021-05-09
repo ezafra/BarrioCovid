@@ -35,10 +35,10 @@ public class PedidoDAOImplementation implements pedidoDAO {
 	}
 
 	@Override
-	public Pedido read(Usuario comprador) {
+	public Pedido read(long id) {
 		Session session = SessionFactoryService.get().openSession();
 		  session.beginTransaction();
-		  Pedido pedido = session.get(Pedido.class, comprador);
+		  Pedido pedido = session.get(Pedido.class, id);
 		 // operaciones
 		  session.getTransaction().commit();
 		  session.close();
@@ -75,14 +75,14 @@ public class PedidoDAOImplementation implements pedidoDAO {
 		session.close();
 		return pedidos;
 	}
-
+	
 	@Override
 	public List<Pedido> readAll(Usuario usuario) {
-		List<Pedido> res = new ArrayList<Pedido> ();
-		for (Pedido pedido : this.readAll())
-			if (pedido.getComprador().equals(usuario))
-				res.add(pedido);
-		return res;
+		//List<Pedido> res = new ArrayList<Pedido> ();
+		//for (Pedido pedido : this.readAll())
+			//if (pedido.getVoluntario().getEmail().equals(usuario) || pedido.getComprador().getEmail().equals(usuario) || pedido.getTienda().getPropietario().getEmail().equals(usuario))
+				//res.add(pedido);
+		return usuario.getPedidos();
 	}
 
 }

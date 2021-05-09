@@ -14,7 +14,7 @@ public class Producto implements Serializable{
 	@Id
 	private String nombre;   //Podría ser un problema para identificar dos objetos iguales (mismo nombre) de tiendas diferentes no?
 	private double precio;
-	private int cantidad;
+	private double cantidad;
 	
 	public Producto() {}
 
@@ -42,11 +42,11 @@ public class Producto implements Serializable{
 		this.precio = precio;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 

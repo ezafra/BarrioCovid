@@ -24,7 +24,7 @@ public class Pedido implements Serializable{
 	private String Fecha;
 	private int estado;
 	private String descripcion;
-	private boolean aDomicilio;  //Ponemos esto para indicar que es un pedido a domicilio?
+	private boolean aDomicilio;  
 	
 	
 	public long getId() {
