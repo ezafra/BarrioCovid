@@ -17,7 +17,7 @@ public class Usuario implements Serializable{
 	private String password;
 	private String name;
 	private String direccion;
-	private List<Pedido> pedidos;
+	private List<Pedido> pedidos; //Esto da problemas, dentro de pedido hay un atributo comprador (Usuario) circulo vicioso de atributo
 	private boolean esVendedor;
 	
 
