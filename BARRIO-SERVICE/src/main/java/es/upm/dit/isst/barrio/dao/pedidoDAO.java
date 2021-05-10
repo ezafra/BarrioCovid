@@ -3,7 +3,6 @@ package es.upm.dit.isst.barrio.dao;
 import java.util.List;
 
 import es.upm.dit.isst.barrio.model.Pedido;
-import es.upm.dit.isst.barrio.model.Usuario;
 
 public interface pedidoDAO {
 
