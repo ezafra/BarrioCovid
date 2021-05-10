@@ -36,10 +36,10 @@ public class ProductoDAOImplementation implements productoDAO {
 	}
 
 	@Override
-	public Producto read (String email) {
+	public Producto read (long id) {
 	  Session session = SessionFactoryService.get().openSession();
 	  session.beginTransaction();
-	  Producto producto = session.get(Producto.class, email);
+	  Producto producto = session.get(Producto.class, id);
 	 // operaciones
 	  session.getTransaction().commit();
 	  session.close();

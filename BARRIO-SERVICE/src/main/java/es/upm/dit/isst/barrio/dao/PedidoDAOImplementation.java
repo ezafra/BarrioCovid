@@ -3,10 +3,11 @@ package es.upm.dit.isst.barrio.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+//import javax.persistence.Entity;
+
 import org.hibernate.Session;
 
 import es.upm.dit.isst.barrio.model.Pedido;
-import es.upm.dit.isst.barrio.model.Producto;
 import es.upm.dit.isst.barrio.model.Usuario;
 
 public class PedidoDAOImplementation implements pedidoDAO {
@@ -77,12 +78,20 @@ public class PedidoDAOImplementation implements pedidoDAO {
 	}
 	
 	@Override
-	public List<Pedido> readAll(Usuario usuario) {
+	public List<Pedido> readAll(String usuario) {
 		//List<Pedido> res = new ArrayList<Pedido> ();
 		//for (Pedido pedido : this.readAll())
 			//if (pedido.getVoluntario().getEmail().equals(usuario) || pedido.getComprador().getEmail().equals(usuario) || pedido.getTienda().getPropietario().getEmail().equals(usuario))
 				//res.add(pedido);
-		return usuario.getPedidos();
+		
+		Session session = SessionFactoryService.get().openSession();
+		  session.beginTransaction();
+		  Usuario user = session.get(Usuario.class, usuario);
+		 
+		  session.getTransaction().commit();
+		  session.close();
+		  		
+		return user.getPedidos();
 	}
 
 }

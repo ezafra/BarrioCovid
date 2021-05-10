@@ -35,7 +35,7 @@ public class TiendaDAOImplementation implements tiendaDAO {
 	}
 
 	@Override
-	public Tienda read(Usuario propietario) {
+	public Tienda read(String propietario) {
 		Session session = SessionFactoryService.get().openSession();
 		  session.beginTransaction();
 		  Tienda tienda = session.get(Tienda.class, propietario);

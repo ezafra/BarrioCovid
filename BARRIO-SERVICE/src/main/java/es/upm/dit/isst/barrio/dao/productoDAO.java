@@ -9,7 +9,7 @@ import es.upm.dit.isst.barrio.model.Tienda;
 public interface productoDAO {
 
 	public Producto create(Producto producto);
-	public Producto read(String nombre);
+	public Producto read(long id);
 	public Producto update(Producto producto);
 	public Producto delete(Producto producto);
 	public List<Producto> readAll();

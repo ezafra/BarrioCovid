@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -13,11 +14,11 @@ public class Tienda implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@OneToOne(mappedBy = "tienda")
-	private Usuario propietario;
+	private String propietario;
 	private String direccion;
 	private String nombre;
 	private String genero;
+	@OneToMany
 	private List<Producto> productos;
 	
 	
@@ -27,10 +28,10 @@ public class Tienda implements Serializable {
 //	public void setEmailPropietario(Usuario propietario) {
 //		this.emailPropietario = propietario.getEmail();
 //	}
-	public Usuario getPropietario() {
+	public String getPropietario() {
 		return propietario;
 	}
-	public void setPropietario(Usuario propietario) {
+	public void setPropietario(String propietario) {
 		this.propietario = propietario;
 	}
 	public String getDireccion() {

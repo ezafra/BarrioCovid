@@ -1,11 +1,11 @@
 package es.upm.dit.isst.barrio.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario implements Serializable{
@@ -17,6 +17,7 @@ public class Usuario implements Serializable{
 	private String password;
 	private String name;
 	private String direccion;
+	@OneToMany
 	private List<Pedido> pedidos;
 	private boolean esVendedor;
 	

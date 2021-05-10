@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Pedido implements Serializable{
@@ -16,9 +18,13 @@ public class Pedido implements Serializable{
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO) long id;
 
+	@OneToOne
 	private Usuario comprador;
+	@OneToOne
 	private Tienda tienda;
+	@OneToOne
 	private Usuario voluntario;
+	@OneToMany
 	private List<Producto> productos;
 	private double precio;
 	private String Fecha;
