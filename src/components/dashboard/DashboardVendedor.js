@@ -1,10 +1,8 @@
 import { Component } from "react";
 import React from "react";
-import ProductList from "../products/ProductList";
-import { connect } from "react-redux"
+
+
 import { Link } from "react-router-dom";
-import {firestoreConnect} from "react-redux-firebase"
-import { compose} from "redux"
 
  class DashboardVendedor extends Component{
     render(){
@@ -15,27 +13,37 @@ import { compose} from "redux"
         const {productos} = this.props;
         console.log(productos);
         
-        const {user} = this.props;
-        console.log(user);
+        
+        
         
         return(
-        <div className="DashboardVendedor container">
-            <div className="row">
+            <div className="col-md-6 col-md-offset-3">
+            <h1>Hola!</h1>
+            <p>Usted está registrado como vendedor</p>
+            
+            
+            
+            <p>
+                <Link to="/pedidosVendedor">Ver los pedidos </Link>
+            </p>
+            <p>
+                <Link to="/historialVendedor">Historial de Pedidos</Link>
+            </p>
+            <p>
+               
+                <Link to={{
+                    pathname: '/tienda',
+                    state: {
+                        productos:productos,
+                        
+                    }  
                 
-            <h3>Hola señor {user.nombre}, esta es una lista de sus productos en venta</h3>
-                <div className="col s12 m6">
-                    
-                    <Link to="/createProduct" user={user} >Crear producto </Link>
-                    
-                    <ProductList productos={productos} user={user}/>
-                    
-                </div>
-
-                <div className="col s12 m5 offset-m1"></div>
-        
-            </div>
-        </div>
-        );
+                
+                
+                }}>Ver productos de la tienda</Link>
+            </p>
+    </div>
+    );
     }
 }
 //para el estado del store a props de este component

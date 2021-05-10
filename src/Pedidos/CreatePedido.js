@@ -2,7 +2,7 @@ import React from "react";
 import {Component} from "react";
 
 import { connect } from "react-redux"
-import { CreatePedido} from "../../store/actions/pedidoActions"
+import { CreatePedido} from "../store/actions/pedidoActions"
 
 
 export class CreatePedido extends Component  {

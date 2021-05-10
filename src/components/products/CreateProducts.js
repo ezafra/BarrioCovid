@@ -48,28 +48,9 @@ export class CreateProduct extends Component  {
     
 
     render(){
-        const {registered} = this.props;
-        console.log(this.props);
+       
         
-        
-        /* const {user} = this.props;
-        console.log(user); */
 
-        /* function sleep(delay) {
-            var start = new Date().getTime();
-            while (new Date().getTime() < start + delay);
-        }
-        
-        try{
-            const {registered} = this.props;
-            const user = registered.find(element => element.isLogged==false);
-            console.log(user);
-            console.log(user.id);
-        }catch(e){ */
-            //sleep(3000);
-            //const user = registered.find(element => element.isLogged);
-            //console.log(user);
-        //}
         return(
             <div className="container">
 

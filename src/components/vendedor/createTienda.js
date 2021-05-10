@@ -17,8 +17,8 @@ export class CreateTienda extends Component  {
            
             
         }
-
     }
+
     
 
     handleChange= (e) => {
@@ -39,7 +39,7 @@ export class CreateTienda extends Component  {
         
         })
         console.log(this.state)
-        this.props.CreateTienda(this.state);
+        this.props.createTienda(this.state);
         
     }
     

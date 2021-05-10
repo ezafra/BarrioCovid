@@ -9,6 +9,10 @@ import SingIn from './components/auth/SingIn';
 import SingUp from './components/auth/SingUp';
 import CreateProduct from './components/products/CreateProducts';
 import inicioVendedor from "./components/vendedor/inicioVendedor";
+import ProductView from "./components/products/ProductView";
+import DashboardVendedor from './components/dashboard/DashboardVendedor';
+import Tienda from './components/vendedor/Tienda';
+import PedidoView from './Pedidos/PedidoView';
 
 
 
@@ -26,7 +30,10 @@ class App extends Component {
 {/*             <Route path="/pedidosVendedor" component={PedidosVendedor} /> */}
             <Route path="/vendedor" component={inicioVendedor} />
             <Route path="/productosVendedor" component={DashBoard} />
-
+            <Route path="/tienda" component={Tienda} />
+            
+            <Route path="/productos" component={ProductView} />
+            <Route path="/pedidosVendedor" component={PedidoView} />
 
           </Switch>
         </div>

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import React from "react";
-import ProductList from "../products/ProductList";
+
 import { connect } from "react-redux";
 import {Link } from "react-router-dom";
 

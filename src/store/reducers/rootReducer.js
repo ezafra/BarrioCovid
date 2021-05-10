@@ -5,6 +5,7 @@ import { firestoreReducer } from "redux-firestore"
 import { firebaseReducer } from "react-redux-firebase"
 import tiendaReducer from "./tiendaReducer"
 import pedidoReducer from "./pedidoReducer"
+import cartReducer from "./cartReducer"
 
 
 
@@ -14,8 +15,10 @@ const rootReducer = combineReducers({
     product: productReducer,
     tienda: tiendaReducer,
     pedido: pedidoReducer,
+    carrito: cartReducer,
     firestore: firestoreReducer,
-    firebase: firebaseReducer
+    firebase: firebaseReducer,
+    
 
 })
 export default rootReducer

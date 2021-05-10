@@ -2,6 +2,7 @@ import React from "react";
 import {Component} from "react";
 import {connect} from "react-redux";
 import {singUp} from "../../store/actions/authActions"
+import { Checkbox } from '@material-ui/core'
 
 
 export class SingUp extends Component  {
@@ -11,6 +12,7 @@ export class SingUp extends Component  {
         nombre:"",
         apellidos:"",
         isSeller: true,
+        isGoing: true
         
     }
 
@@ -58,13 +60,15 @@ export class SingUp extends Component  {
 
                     <div className="input-field">
                         <label htmlFor="isSeller">isSeller</label>
-                        <input type="boolean" id="isSeller" onChange={this.handleChange}/>
+                        <input type="checkbox" id="isSeller" checked={this.state.isGoing} onChange={this.handleChange}/>
                     </div>
+                    
                     
 
                     <div className="input-field">
                         <button className="btn pink">Registrarse</button>
                     </div>
+
 
 
 
