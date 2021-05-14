@@ -1,5 +1,7 @@
 package es.upm.dit.isst.barrio.rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -35,6 +37,18 @@ public class UsuarioResource {
           return Response.status(Response.Status.NOT_FOUND).build();
         return Response.ok(u, MediaType.APPLICATION_JSON).build();
     }
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response create(Usuario unew) throws URISyntaxException {
+		Usuario u = UsuarioDAOImplementation.getInstance().create(unew);
+		if (u != null) {
+			URI uri = new URI("/BARRIO-SERVICE/rest/usuarios/" + u.getEmail());
+            return Response.created(uri).build();
+		}
+		return Response.status(Response.Status.NOT_FOUND).build();
+
+	}
 	
 	@POST
     @Consumes(MediaType.APPLICATION_JSON)

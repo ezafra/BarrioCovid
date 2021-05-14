@@ -1,5 +1,7 @@
 package es.upm.dit.isst.barrio.rest;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -33,7 +35,19 @@ public class ProductoResource {
         if (p == null)
           return Response.status(Response.Status.NOT_FOUND).build();
         return Response.ok(p, MediaType.APPLICATION_JSON).build();
-    }        
+    }
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response create(Producto pnew) throws URISyntaxException {
+		Producto p = ProductoDAOImplementation.getInstance().create(pnew);
+		if (p != null) {
+			URI uri = new URI("/BARRIO-SERVICE/rest/productos/" + p.getId());
+            return Response.created(uri).build();
+		}
+		return Response.status(Response.Status.NOT_FOUND).build();
+
+	}
 
 	@POST
     @Consumes(MediaType.APPLICATION_JSON)
