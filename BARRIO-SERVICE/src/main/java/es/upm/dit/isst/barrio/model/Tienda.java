@@ -21,12 +21,7 @@ public class Tienda implements Serializable {
 	private List<Producto> productos;
 	
 	
-//	public String getEmailPropietario() {
-//		return emailPropietario;
-//	}
-//	public void setEmailPropietario(Usuario propietario) {
-//		this.emailPropietario = propietario.getEmail();
-//	}
+
 	public String getPropietario() {
 		return propietario;
 	}

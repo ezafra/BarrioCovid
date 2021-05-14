@@ -61,7 +61,7 @@ public class PedidoResource {
     public Response update(@PathParam("id") long id, Pedido p) {
             System.out.println("Update request for" + id + " " + p.toString());				//Cambiar por equals?
         Pedido told = PedidoDAOImplementation.getInstance().read(id);
-        if ((told == null) || (! told.getComprador().getEmail().contentEquals(p.getComprador().getEmail())))
+        if ((told == null) || (! (told.getId() == p.getId())))
           return Response.notModified().build();
         PedidoDAOImplementation.getInstance().update(p);
         return Response.ok().build();                
