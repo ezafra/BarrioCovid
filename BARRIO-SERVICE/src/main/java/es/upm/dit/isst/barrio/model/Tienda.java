@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -17,7 +18,7 @@ public class Tienda implements Serializable {
 	private String direccion;
 	private String nombre;
 	private String genero;
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Producto> productos;
 	
 	

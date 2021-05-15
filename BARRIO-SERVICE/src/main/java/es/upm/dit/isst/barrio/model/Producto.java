@@ -3,6 +3,7 @@ package es.upm.dit.isst.barrio.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +16,7 @@ public class Producto implements Serializable{
 	
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO) long id;
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Tienda tienda;
 	private String nombre;   //Podría ser un problema para identificar dos objetos iguales (mismo nombre) de tiendas diferentes no?
 	private double precio;

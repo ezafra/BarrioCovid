@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -17,7 +18,7 @@ public class Usuario implements Serializable{
 	private String password;
 	private String name;
 	private String direccion;
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Pedido> pedidos; //Esto da problemas, dentro de pedido hay un atributo comprador (Usuario) circulo vicioso de atributo
 	private boolean esVendedor;
 	

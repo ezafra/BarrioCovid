@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,13 +19,13 @@ public class Pedido implements Serializable{
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO) long id;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Usuario comprador;
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Tienda tienda;
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Usuario voluntario;
-	@OneToMany
+	@OneToMany(fetch=FetchType.EAGER)
 	private List<Producto> productos;
 	private double precio;
 	private String Fecha;
