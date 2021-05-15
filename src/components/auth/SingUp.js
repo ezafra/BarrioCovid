@@ -9,11 +9,10 @@ export class SingUp extends Component  {
     state={
         email:"",
         password:"",
-        nombre:"",
-        apellidos:"",
-        isSeller: true,
-        isGoing: true
-        
+        name:"",
+        direccion:"",
+        pedidos:null,
+        esVendedor: true,
     }
 
     handleChange= (e) => {
@@ -29,6 +28,7 @@ export class SingUp extends Component  {
         console.log(this.state);
         this.props.singUp(this.state);
     }
+   
 
 
     render(){
@@ -50,18 +50,27 @@ export class SingUp extends Component  {
 
                     <div className="input-field">
                         <label htmlFor="nombre">Nombre</label>
-                        <input type="text" id="nombre" onChange={this.handleChange}/>
+                        <input type="text" id="name" onChange={this.handleChange}/>
                     </div>
 
-                    <div className="input-field">
+                    {/* <div className="input-field">
                         <label htmlFor="apellidos">Apellidos</label>
                         <input type="text" id="apellidos" onChange={this.handleChange}/>
+                    </div> */}
+
+                    <div className="input-field">
+                        <label htmlFor="direccion">Direccion</label>
+                        <input type="text" id="direccion" onChange={this.handleChange}/>
+                    </div>
+{/* 
+                    <div className="input-field">
+                        <label htmlFor="isSeller">isSeller</label>
+                        <input type="text" id="isSellerr" checked={this.state.isGoing} onChange={this.handleChange}/>
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="isSeller">isSeller</label>
-                        <input type="checkbox" id="isSeller" checked={this.state.isGoing} onChange={this.handleChange}/>
-                    </div>
+                       <Checkbox id ="isSeller" text="tocaSiEresVendedor" />
+                    </div> */}
                     
                     
 
@@ -80,12 +89,14 @@ export class SingUp extends Component  {
 }
 
 const mapStateToProps = (state) =>{
+    console.log(state)
     return {
-        auth: state.firebase.auth
+        state
     }
 }
 
 const mapDispatchToProps = (dispatch) =>{
+   
     return{
         singUp: (newUser) => dispatch(singUp(newUser))
     }

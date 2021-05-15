@@ -1,24 +1,15 @@
-import { getFirestore } from "redux-firestore";
+import axios from "axios";
+
 
 
 export const singIn = (credentials) => {
-    return (dispatch, getState, {getFirebase})=>{
-        const firebase= getFirebase();
-        const firestore= getFirestore();
-        
-        console.log(credentials);
-        firebase.auth().signInWithEmailAndPassword(
-            credentials.email,
-            credentials.password
-        )
-        firestore.collection("registrados").doc("OUYp7kRnDqB2jzDgKUFj").update({
-            
-            isLogged: true,
-            
+    return (dispatch)=>{
 
-            
-        }).then(()=>{
-            dispatch({type:"LOGIN_SUCCESS"})
+        return  axios.get("http://localhost:8080/BARRIO-SERVICE/rest/usuarios")
+        .then(()=>{
+            localStorage.setItem('user', JSON.stringify(credentials));
+
+            dispatch({type:"LOGIN_SUCCESS", usuario: credentials})
         }).catch((err) => {
             dispatch ({type: "LOGIN_ERROR"})
         });
@@ -27,19 +18,9 @@ export const singIn = (credentials) => {
 }
 
 export const singOut = () => {
-    return (dispatch, getState, {getFirebase})=>{
-        const firebase= getFirebase();
-        const firestore= getFirestore()
-
-        firebase.auth().signOut()
-        console.log("se ha ejecutao la funcion")
-        firestore.collection("registrados").doc("OUYp7kRnDqB2jzDgKUFj").update({
-            
-            isLogged: false,
-            
-
-            
-        }).then(()=>{
+    return (dispatch)=>{
+        return  axios.get("http://localhost:8080/BARRIO-SERVICE/rest/usuarios/")
+        .then(()=>{
             dispatch({type: "LOGOUT_SUCCESS"})
 
         }).catch((err) => {
@@ -54,25 +35,11 @@ export const singOut = () => {
 }
 
 export const singUp = (newUser) => {
-    return (dispatch, getState, {getFirebase, getFirestore})=>{
-        const firebase= getFirebase();
-        const firestore= getFirestore();
-
-        firebase.auth().createUserWithEmailAndPassword(
-            newUser.email,
-            newUser.password
-        )
-        console.log(newUser.nombre);
-        firestore.collection("registrados").add({
-            nombre: newUser.nombre,
-            apellidos: newUser.apellidos,
-            email: newUser.email,
-            contraseña: newUser.password,
-            isSeller: newUser.isSeller,
-            isLogged:false
-            
-
-        }).then(() =>{
+    return (dispatch)=>{
+        const usuario = JSON.stringify(newUser)
+        console.log(usuario)
+        return axios.post("http://localhost:8080/BARRIO-SERVICE/rest/usuarios", newUser)
+        .then(() =>{
             dispatch({type: "SINGUP_SUCCESS"})
         }).catch((err)=>{
             dispatch({type: "SIGNUP_ERROR", err})

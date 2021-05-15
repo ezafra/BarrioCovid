@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
     return{
         
         
-        registered: state.firestore.ordered.registered
+        state
     }
 
 }

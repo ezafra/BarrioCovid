@@ -7,9 +7,11 @@ import {singIn} from "../../store/actions/authActions"
 export class SingIn extends Component  {
     state={
         email:"",
-        password:"", 
-        isLogged:false,
-        isSeller:false
+        password:"",
+        name:"",
+        direccion:"",
+        pedidos:null,
+        esVendedor: true,
     }
 
     handleChange= (e) => {
@@ -22,7 +24,7 @@ export class SingIn extends Component  {
         
         this.setState({
             ...this.state,
-            isLogged:true
+        
         })
         console.log(this.state);
         e.preventDefault();
@@ -65,5 +67,6 @@ const mapDispatchToProps= (dispatch)=>{
         singIn: (creds) => dispatch(singIn(creds))
     }
 }
+
 
 export default connect(null,mapDispatchToProps )(SingIn)

@@ -31,6 +31,7 @@ import {productos} from "../../datos/productos"
             isLogged: true
 
         }
+        console.log(this.props)
   
         if( registrado.isLogged && !registrado.isSeller){
             return(<DashboardUser  productos={products} user = {registrado}/>)
@@ -49,25 +50,13 @@ import {productos} from "../../datos/productos"
 //para el estado del store a props de este component
 const mapStateToProps = (state) => {
     
-    //console.log(state);
+    console.log(state);
     return{
-        
-        users: state.firestore.ordered.users,
-        registered: state.firestore.ordered.registered,
-        registrados: state.firestore.ordered.registrados,
-        
+        state
     }
 
 }
 
 
 //conecta dashboard al store creado en el reducer de productos que es lo que queremos mostrar
-export default compose(
-    connect (mapStateToProps),
-    firestoreConnect([
-        
-        {collection: "users"},
-        {collection: "registered"},
-        {collection: "registrados"}
-    ])
-)(DashBoard)
+export default connect (mapStateToProps)(DashBoard)

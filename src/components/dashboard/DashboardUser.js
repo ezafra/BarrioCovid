@@ -7,6 +7,7 @@ import {firestoreConnect} from "react-redux-firebase"
 import { compose} from "redux"
 import VendedorSummary from "../vendedor/VendedorSummary";
 import { tiendas} from "../../datos/tiendas"
+import {loadTiendas} from "../../store/actions/tiendaActions"
 
 
  class DashboardUser extends Component{
@@ -18,6 +19,10 @@ import { tiendas} from "../../datos/tiendas"
         
         console.log(tiendas);
         console.log(user);
+        
+        
+        
+        
 
 
         return(
@@ -26,7 +31,11 @@ import { tiendas} from "../../datos/tiendas"
             <div className="row">
             <h3>Señor {user.nombre}, esta es una lista de los establecimientos disponibles: </h3>
                 <div className="col s12 m6">
+                <button onClick={()=>{
+                    let tiendas2 = this.props.loadTiendas();
+                    console.log(tiendas2)
                     
+                    }}>pulsa para ver tiendas</button>    
                 
                 {tiendas.length > 0  && tiendas.map(tienda =>{
                 return (
@@ -50,20 +59,19 @@ import { tiendas} from "../../datos/tiendas"
 }
 //para el estado del store a props de este component
 const mapStateToProps = (state) => {
+    console.log(state)
 
-    return{
-        registered: state.firestore.ordered.registered
+    return state
+    
+
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        loadTiendas: () => dispatch(loadTiendas())
     }
-
 }
 
 
 //conecta DashboardUser al store creado en el reducer de productos que es lo que queremos mostrar
-export default compose(
-    connect (mapStateToProps),
-    firestoreConnect([
-        
 
-        {collection: "registered"}
-    ])
-)(DashboardUser)
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardUser);

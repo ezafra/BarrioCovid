@@ -13,7 +13,7 @@ const NotSignedLinks = (props) => {
     return(
         <ul className="right">
             <li><NavLink to="/login">Login</NavLink> </li>
-            <li><a onClick={props.singOut()}>LogOut</a></li>
+            
             <li><NavLink to="/registro">Register</NavLink> </li>
         </ul>
     )
@@ -26,14 +26,9 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state)=> {
     
     return {
-        credenciales: state.firestore.ordered.registered
+        state
     }
 }
 
-export default  compose(
-    connect (mapStateToProps,mapDispatchToProps),
-    firestoreConnect([
-        {collection: "registered"},
-        
-    ])
-)(NotSignedLinks);
+export default connect (mapStateToProps,mapDispatchToProps)(NotSignedLinks);
+//<li><a onClick={props.singOut()}>LogOut</a></li>

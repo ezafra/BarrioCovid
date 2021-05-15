@@ -1,7 +1,7 @@
 //import { CreateProduct } from "../../components/products/CreateProducts";
 
 const initState = {
-    tiendas: []
+    tiendas: ["hola"]
 }
 
 
@@ -16,6 +16,12 @@ const tiendaReducer = (state = initState , action) => {
         case "CREATE_TIENDA_ERROR":
             console.log("error de creacion", action.err);
             return state;
+
+        case "SHOW_TIENDAS":
+            return{
+            ...state,
+            tiendas: action.tiendas
+            }
     }
     return state;
 }
