@@ -38,6 +38,9 @@ public class UsuarioResource {
         return Response.ok(u, MediaType.APPLICATION_JSON).build();
     }
 	
+	
+	
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Usuario unew) throws URISyntaxException {
