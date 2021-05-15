@@ -25,7 +25,6 @@ public class UsuarioResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Usuario> readAll () {
-	        
 		return UsuarioDAOImplementation.getInstance().readAll();
 	        
 	}

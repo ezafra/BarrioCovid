@@ -69,7 +69,7 @@ public class UsuarioDAOImplementation implements usuarioDAO {
 		List<Usuario> usuario = new ArrayList<Usuario> ();
 		Session session = SessionFactoryService.get().openSession();
 		session.beginTransaction();
-		usuario.addAll(session.createQuery("From Tienda").list());
+		usuario.addAll(session.createQuery("From Usuario").list());
 		session.getTransaction().commit();
 		session.close();
 		return usuario;
