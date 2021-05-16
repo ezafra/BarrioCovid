@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 
+
 import es.upm.dit.isst.barrio.model.Producto;
-import es.upm.dit.isst.barrio.model.Tienda;
 
 
 public class ProductoDAOImplementation implements productoDAO {
@@ -86,5 +86,6 @@ public class ProductoDAOImplementation implements productoDAO {
 				res.add(producto);
 		return res;
 	}
+	
 
 }

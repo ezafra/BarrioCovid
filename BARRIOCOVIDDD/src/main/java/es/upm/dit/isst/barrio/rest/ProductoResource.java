@@ -37,6 +37,13 @@ public class ProductoResource {
         return Response.ok(p, MediaType.APPLICATION_JSON).build();
     }
 	
+	@GET
+	@Path("tienda/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Producto> readAll (@PathParam("id") String id) {
+	        return ProductoDAOImplementation.getInstance().readAll(id);
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response create(Producto pnew) throws URISyntaxException {
