@@ -11,7 +11,7 @@ export class CreateProduct extends Component  {
         this.state={
             nombre: "",
             id:null,
-            tienda:"e.zafra@alumnos.upm.es",
+            tienda:"",
             precio:0,
             cantidad:"",
             
@@ -25,24 +25,15 @@ export class CreateProduct extends Component  {
     
     
     handleChange= (e) => {
+        const jeje = JSON.parse(localStorage.getItem("registrado"))
         this.setState({
+            tienda: jeje.email,
             [e.target.id]: e.target.value
         })
     }
 
     handleSubmit=(e) => {
         e.preventDefault();
-        
-        
-        //console.log(user);
-        
-        console.log(this.state)
-        this.setState({
-            ...this.state,
-            tienda: "edelzafra@gmail.com"
-
-        })
-        console.log(this.state)
         this.props.createProduct(this.state);
         
     }

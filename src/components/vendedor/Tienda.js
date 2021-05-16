@@ -8,11 +8,11 @@ import { connect } from "react-redux";
 
 
  class Tienda extends Component{
-    componentDidMount= ()=>{
+    /* componentDidMount= ()=>{
         const seller = JSON.parse(localStorage.getItem("registrado"))
         showTienda(seller)
-        console.log(this.props)
-    }
+        
+    } */
     handleButton = () =>{
         const seller = JSON.parse(localStorage.getItem("registrado"))
         this.props.showTienda(seller)
@@ -34,7 +34,7 @@ import { connect } from "react-redux";
                 
             <h3>Hola señor, esta es una lista de sus productos en venta</h3>
                 <div className="col s12 m6">
-                   {/*  { <button onClick={this.handleButton()}>cargar tienda</button> } */}
+                   {/*  <button onClick={this.handleButton()}>cargar tienda</button>  */} 
                     
                     <Link to="/createProduct"  >Crear producto </Link>
                     
@@ -53,7 +53,7 @@ import { connect } from "react-redux";
 //para el estado del store a props de este component
 const mapStateToProps = (state) => {
     
-    // console.log(state);
+    console.log(state);
     return{
         state
     }
