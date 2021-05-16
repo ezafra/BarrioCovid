@@ -13,7 +13,7 @@ export const createTienda = (tienda) => {
 export function loadTiendas(){
     
     return(dispatch)=>{
-        return axios.get("http://localhost:8080/BARRIO-SERVICE/rest/tiendas",{
+        return axios.get("http://localhost:8080/BARRIOCOVIDDD/rest/tiendas",{
             headers: { 
             'x-apikey': 'API_KEY',
             },

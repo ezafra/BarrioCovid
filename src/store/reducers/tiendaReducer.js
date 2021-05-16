@@ -1,7 +1,7 @@
 //import { CreateProduct } from "../../components/products/CreateProducts";
 
 const initState = {
-    tiendas: ["hola"]
+    tiendas: []
 }
 
 

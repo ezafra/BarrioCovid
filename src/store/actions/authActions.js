@@ -1,15 +1,28 @@
 import axios from "axios";
+import { history } from "../../history/history";
 
 
 
 export const singIn = (credentials) => {
     return (dispatch)=>{
+        const email = credentials.email;
+        const url = `http://localhost:8080/BARRIOCOVIDDD/rest/usuarios/${email}`
 
-        return  axios.get("http://localhost:8080/BARRIO-SERVICE/rest/usuarios")
-        .then(()=>{
-            localStorage.setItem('user', JSON.stringify(credentials));
+        return  axios.get(url)
+        .then((res)=>{
+            
+            if(res.data.email===credentials.email && res.data.password ===credentials.password){
+                
+                dispatch({type:"LOGIN_SUCCESS", usuario: res.data})
+                console.log(res)
+                localStorage.setItem("registrado", JSON.stringify(res.data)) 
+                history.push("/dashboard")
+            }else{
+                dispatch ({type: "LOGIN_ERROR"})
+                history.push("/login")
+            }
 
-            dispatch({type:"LOGIN_SUCCESS", usuario: credentials})
+            
         }).catch((err) => {
             dispatch ({type: "LOGIN_ERROR"})
         });
@@ -19,8 +32,9 @@ export const singIn = (credentials) => {
 
 export const singOut = () => {
     return (dispatch)=>{
-        return  axios.get("http://localhost:8080/BARRIO-SERVICE/rest/usuarios/")
-        .then(()=>{
+        return   axios.get("http://localhost:8080/BARRIOCOVIDDD/rest/usuarios")
+        .then((res)=>{
+            localStorage.removeItem("registrado")
             dispatch({type: "LOGOUT_SUCCESS"})
 
         }).catch((err) => {
@@ -38,7 +52,20 @@ export const singUp = (newUser) => {
     return (dispatch)=>{
         const usuario = JSON.stringify(newUser)
         console.log(usuario)
-        return axios.post("http://localhost:8080/BARRIO-SERVICE/rest/usuarios", newUser)
+        const tienda = {
+            propietario: newUser.email,
+            direccion: newUser.direccion, 
+            nombre: "",
+            genero: "", 
+            productos : []
+        }
+        return axios.post("http://localhost:8080/BARRIOCOVIDDD/rest/usuarios", newUser)
+        
+        .then(()=>{
+            console.log("tienda creada")
+            console.log(tienda)
+            return axios.post("http://localhost:8080/BARRIOCOVIDDD/rest/tiendas", tienda )
+        })
         .then(() =>{
             dispatch({type: "SINGUP_SUCCESS"})
         }).catch((err)=>{

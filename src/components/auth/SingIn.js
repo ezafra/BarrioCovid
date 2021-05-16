@@ -31,10 +31,13 @@ export class SingIn extends Component  {
         this.props.singIn(this.state)
 
     }
+    
 
 
     render(){
+        console.log(this.props)
         return(
+            
             <div className="container">
 
                 <form onSubmit={this.handleSubmit} className="white">
@@ -67,6 +70,11 @@ const mapDispatchToProps= (dispatch)=>{
         singIn: (creds) => dispatch(singIn(creds))
     }
 }
+const mapStateToProps= (state)=>{
+    return {
+        state
+    }
+}
 
 
-export default connect(null,mapDispatchToProps )(SingIn)
+export default connect(mapStateToProps,mapDispatchToProps )(SingIn)

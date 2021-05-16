@@ -19,6 +19,10 @@ import {loadTiendas} from "../../store/actions/tiendaActions"
         
         console.log(tiendas);
         console.log(user);
+        console.log(this.props)
+        let tiendas3 = this.props.tienda.tiendas
+        console.log(tiendas3)
+        
         
         
         
@@ -37,7 +41,7 @@ import {loadTiendas} from "../../store/actions/tiendaActions"
                     
                     }}>pulsa para ver tiendas</button>    
                 
-                {tiendas.length > 0  && tiendas.map(tienda =>{
+                {tiendas3.length > 0  && tiendas3.map(tienda =>{
                 return (
                     <VendedorSummary tienda={tienda}/>
                 )
