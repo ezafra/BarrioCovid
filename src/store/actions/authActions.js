@@ -3,7 +3,7 @@ import { history } from "../../history/history";
 
 
 
-export const singIn = (credentials) => {
+export const singIn =   (credentials) => {
     return (dispatch)=>{
         const email = credentials.email;
         const url = `http://localhost:8080/BARRIOCOVIDDD/rest/usuarios/${email}`
@@ -15,11 +15,15 @@ export const singIn = (credentials) => {
                 
                 dispatch({type:"LOGIN_SUCCESS", usuario: res.data})
                 console.log(res)
-                localStorage.setItem("registrado", JSON.stringify(res.data)) 
+                localStorage.setItem("registrado", JSON.stringify(res.data))
+                
                 history.push("/dashboard")
+                window.location.reload();
+                
             }else{
                 dispatch ({type: "LOGIN_ERROR"})
                 history.push("/login")
+                
             }
 
             

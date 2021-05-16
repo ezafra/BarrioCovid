@@ -1,6 +1,7 @@
 import React from "react";
 import {Component} from "react";
 import { connect } from "react-redux"
+import { Redirect } from "react-router";
 import {singIn} from "../../store/actions/authActions"
 
 
@@ -13,6 +14,8 @@ export class SingIn extends Component  {
         pedidos:null,
         esVendedor: true,
     }
+
+    redirect = false;
 
     handleChange= (e) => {
         this.setState({
@@ -28,7 +31,9 @@ export class SingIn extends Component  {
         })
         console.log(this.state);
         e.preventDefault();
-        this.props.singIn(this.state)
+        this.props.singIn(this.state);
+
+        this.redirect = true;
 
     }
     
@@ -39,6 +44,7 @@ export class SingIn extends Component  {
         return(
             
             <div className="container">
+                {/*this.redirect && <Redirect to ='/dashboard'/>*/}
 
                 <form onSubmit={this.handleSubmit} className="white">
 
