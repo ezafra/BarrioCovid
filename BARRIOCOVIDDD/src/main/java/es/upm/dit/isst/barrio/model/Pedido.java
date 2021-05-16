@@ -20,7 +20,7 @@ public class Pedido implements Serializable{
 	private String voluntario;
 	private long[] productos;
 	private double precio;
-	private String Fecha;
+	private String fecha;
 	private int estado;
 	private String descripcion;
 	private boolean aDomicilio;  
@@ -84,12 +84,12 @@ public class Pedido implements Serializable{
 
 
 	public String getFecha() {
-		return Fecha;
+		return fecha;
 	}
 
 
 	public void setFecha(String fecha) {
-		Fecha = fecha;
+		this.fecha = fecha;
 	}
 
 
@@ -157,7 +157,7 @@ public class Pedido implements Serializable{
 	@Override
 	public String toString() {
 		return "Pedido [comprador=" + comprador + ", tienda=" + tienda + ", productos=" + productos + ", precio="
-				+ precio + ", Fecha=" + Fecha + ", estado=" + estado + ", descripción=" + descripcion + "]";
+				+ precio + ", Fecha=" + fecha + ", estado=" + estado + ", descripción=" + descripcion + "]";
 	}
 	
 	
