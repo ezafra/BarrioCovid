@@ -1,7 +1,6 @@
 package es.upm.dit.isst.barrio.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,7 +15,7 @@ public class Usuario implements Serializable{
 	private String password;
 	private String name;
 	private String direccion;
-	private long[] pedidos; //Esto da problemas, dentro de pedido hay un atributo comprador (Usuario) circulo vicioso de atributo
+	private long[] pedidos; 
 	private boolean esVendedor;
 	
 
