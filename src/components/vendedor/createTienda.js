@@ -2,42 +2,45 @@ import React from "react";
 import {Component} from "react";
 
 import { connect } from "react-redux"
-import { createTienda} from "../../store/actions/productActions"
+import { createTienda} from "../../store/actions/tiendaActions"
 
 
 export class CreateTienda extends Component  {
     constructor(props){
         super(props);
         this.state={
-            nombreTienda: "",
-            vendedor:"",
-            idVendedor:"",
+            propietario: "",
+            direccion:"",
+            genero:"",
+            nombre:"",
             productos:[],
-            idTienda:""
-           
             
+    
         }
     }
-
+    
+    
     
 
     handleChange= (e) => {
+        let registiring = JSON.parse(sessionStorage.getItem("registiring"))
         this.setState({
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value,
+            propietario: registiring.email,
+            direccion: registiring.direccion
         })
     }
 
+
     handleSubmit=(e) => {
         e.preventDefault();
-        const {registered} = this.props;
-
+        console.log(this.state)
+       
+        console.log(this.state)
+        sessionStorage.removeItem("registiring")
         
         //console.log(user);
-        this.setState({
-            ...this.state,
-            vendorId: registered[0].id
-        
-        })
+       
         console.log(this.state)
         this.props.createTienda(this.state);
         
@@ -51,10 +54,15 @@ export class CreateTienda extends Component  {
 
                 <form onSubmit={this.handleSubmit} className="white">
 
-                    <h5 className="grey-text text-darken-3">Crear tienda</h5>
+                    <h5 className="grey-text text-darken-3">Actualizar tienda</h5>
                     <div className="input-field">
-                        <label htmlFor="nombreTienda">Nombre de la tienda </label>
-                        <input type="text" id="nombreTienda" onChange={this.handleChange}/>
+                        <label htmlFor="nombre">Nombre de la tienda </label>
+                        <input type="text" id="nombre" onChange={this.handleChange}/>
+                    </div>
+                    
+                    <div className="input-field">
+                        <label htmlFor="genero">Genero </label>
+                        <input type="text" id="genero" onChange={this.handleChange}/>
                     </div>
 
                  
@@ -91,4 +99,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTienda)
+export default connect(mapStateToProps,mapDispatchToProps)(CreateTienda)

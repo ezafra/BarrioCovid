@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
             <div className="col-md-6 col-md-offset-3">
             <h1>Hola {vendedor.name}!</h1>
             <p>Usted está registrado como vendedor</p>
-            <Link to ="/formTienda">Datos de la tienda</Link> 
+            
             
             
             

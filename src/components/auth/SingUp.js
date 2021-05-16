@@ -2,7 +2,8 @@ import React from "react";
 import {Component} from "react";
 import {connect} from "react-redux";
 import {singUp} from "../../store/actions/authActions"
-import { Checkbox } from '@material-ui/core'
+import ToggleButton from 'react-toggle-button'
+
 
 
 export class SingUp extends Component  {
@@ -20,6 +21,14 @@ export class SingUp extends Component  {
             [e.target.id]: e.target.value
             
         })
+    }
+    
+    handleSeller = (e) => {
+        this.setState({
+                ...this.state,
+                esVendedor: !this.state.esVendedor,
+        })
+        
     }
 
     handleSubmit= (e) => {
@@ -71,6 +80,11 @@ export class SingUp extends Component  {
                     <div className="input-field">
                        <Checkbox id ="isSeller" text="tocaSiEresVendedor" />
                     </div> */}
+                    <div className="input-field">
+                        <label htmlFor="isSeller">Es Vendedor</label>
+                        <p> . </p>
+                        <ToggleButton className="form-control" name="isSeller" id="isSeller" value={this.state.esVendedor || false} onToggle={this.handleSeller} />
+                    </div>
                     
                     
 

@@ -22,6 +22,13 @@ const tiendaReducer = (state = initState , action) => {
             ...state,
             tiendas: action.tiendas
             }
+            case "LOAD_TIENDA":
+                console.log(state)
+                return{
+                ...state,
+                tienda: action.tienda
+                }
+    
     }
     return state;
 }
