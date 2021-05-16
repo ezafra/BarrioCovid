@@ -19,6 +19,8 @@ public class Usuario implements Serializable{
 	private boolean esVendedor;
 	
 
+	
+
 	public String getEmail() {
 		return email;
 	}
@@ -58,11 +60,11 @@ public class Usuario implements Serializable{
 	public void setPedidos(long[] pedidos) {
 		this.pedidos = pedidos;
 	}
-	
-	public boolean getEsVendedor() {
+
+	public boolean isEsVendedor() {
 		return esVendedor;
 	}
-	
+
 	public void setEsVendedor(boolean esVendedor) {
 		this.esVendedor = esVendedor;
 	}

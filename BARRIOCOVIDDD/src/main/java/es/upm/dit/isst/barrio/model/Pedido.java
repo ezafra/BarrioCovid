@@ -24,16 +24,18 @@ public class Pedido implements Serializable{
 	private int estado;
 	private String descripcion;
 	private boolean aDomicilio;  
-	
+		
 	
 	public long getId() {
 		return id;
 	}
-	
+
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
+
 	public String getComprador() {
 		return comprador;
 	}
@@ -41,15 +43,6 @@ public class Pedido implements Serializable{
 
 	public void setComprador(String comprador) {
 		this.comprador = comprador;
-	}
-	
-	public String getVoluntario() {
-		return voluntario;
-	}
-
-
-	public void setVoluntario(String voluntario) {
-		this.voluntario = voluntario;
 	}
 
 
@@ -60,6 +53,16 @@ public class Pedido implements Serializable{
 
 	public void setTienda(String tienda) {
 		this.tienda = tienda;
+	}
+
+
+	public String getVoluntario() {
+		return voluntario;
+	}
+
+
+	public void setVoluntario(String voluntario) {
+		this.voluntario = voluntario;
 	}
 
 
@@ -111,12 +114,14 @@ public class Pedido implements Serializable{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	public boolean getADomicilio(){
+
+
+	public boolean isaDomicilio() {
 		return aDomicilio;
 	}
-	
-	public void setADomicilio(boolean aDomicilio){
+
+
+	public void setaDomicilio(boolean aDomicilio) {
 		this.aDomicilio = aDomicilio;
 	}
 
