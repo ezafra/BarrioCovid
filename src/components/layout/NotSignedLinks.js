@@ -12,9 +12,8 @@ const NotSignedLinks = (props) => {
     
     return(
         <ul className="right">
-            <li><NavLink to="/login">Login</NavLink> </li>
-            {/*<li><a onClick={props.singOut()}>LogOut</a></li>*/}
-            
+            <li><NavLink to="/login">Login</NavLink> </li> 
+            <button onClick={props.singOut}>Log Out</button>          
             <li><NavLink to="/registro">Register</NavLink> </li>
         </ul>
     )

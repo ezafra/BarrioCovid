@@ -13,6 +13,8 @@ import ProductView from "./components/products/ProductView";
 import DashboardVendedor from './components/dashboard/DashboardVendedor';
 import Tienda from './components/vendedor/Tienda';
 import PedidoView from './Pedidos/PedidoView';
+import createTienda from './components/vendedor/createTienda';
+import { CreatePedido } from './Pedidos/CreatePedido';
 
 
 
@@ -23,6 +25,7 @@ class App extends Component {
         <div className="App">
           <NavBar/>
           <Switch>
+            <Route path="/createPedido" component={CreatePedido}/>
             <Route path="/dashboard" component={DashBoard} />
             <Route path="/registro" component={SingUp} />
             <Route path="/login" component={SingIn} />
@@ -34,6 +37,7 @@ class App extends Component {
             
             <Route path="/productos" component={ProductView} />
             <Route path="/pedidosVendedor" component={PedidoView} />
+            <Route path="/formTienda" component={createTienda} />
 
           </Switch>
         </div>

@@ -1,10 +1,12 @@
 import axios from "axios"
+import { history } from "../../history/history";
 export const createTienda = (tienda) => {
     return(dispatch) => {
         //llamada a la base de datos
-        return axios.get()
+        return axios.post("http://localhost:8080/BARRIOCOVIDDD/rest/tiendas", tienda)
         .then(() => {
             dispatch({type: "CREATE_TIENDA", tienda: tienda})
+            
         }).catch((err) => {
             dispatch({type: "CREATE_TIENDA_ERROR", err})
         })
@@ -34,5 +36,16 @@ export function showTiendas(tiendas){
         tiendas: tiendas
     }
 
+}
+
+export function showTienda(seller){
+    console.log(seller)
+    return (dispatch)=>{
+         axios.get(`http://localhost:8080/BARRIOCOVIDDD/rest/tiendas/${seller.email}`)
+        .then((res)=>{
+            dispatch(({type:"LOAD_TIENDA", tienda: res.data}))
+            console.log(res.data)
+    })
+}
 }
 

@@ -9,12 +9,12 @@ export class CreateProduct extends Component  {
     constructor(props){
         super(props);
         this.state={
-            productName: "",
-            price:"",
-            description:"",
+            nombre: "",
+            id:null,
             tienda:"",
-            id:"",
-            vendorId:"cTJA2hE47W0Kw9JiTQFD"
+            precio:0,
+            cantidad:"",
+            
             
         }
 
@@ -25,23 +25,18 @@ export class CreateProduct extends Component  {
     
     
     handleChange= (e) => {
+        const jeje = JSON.parse(localStorage.getItem("registrado"))
         this.setState({
+            tienda: jeje.email,
             [e.target.id]: e.target.value
         })
     }
 
     handleSubmit=(e) => {
         e.preventDefault();
-        const {registered} = this.props;
-
         
-        //console.log(user);
-        this.setState({
-            ...this.state,
-            vendorId: registered[0].id
         
-        })
-        console.log(this.state)
+        
         this.props.createProduct(this.state);
         
     }
@@ -58,29 +53,30 @@ export class CreateProduct extends Component  {
 
                     <h5 className="grey-text text-darken-3">Añadir producto a su tienda</h5>
                     <div className="input-field">
-                        <label htmlFor="productName">Nombre del Producto</label>
-                        <input type="text" id="productName" onChange={this.handleChange}/>
+                        <label htmlFor="nombre">Nombre del Producto</label>
+                        <input type="text" id="nombre" onChange={this.handleChange}/>
                     </div>
 
                     <div className="input-field">
-                        <label htmlFor="price">Precio (€)</label>
-                        <input type="text" id="price" onChange={this.handleChange}/>
+                        <label htmlFor="precio">Precio (€)</label>
+                        <input type="text" id="precio" onChange={this.handleChange}/>
                     </div>
 
-                    <div className="input-field">
+                   {/*  <div className="input-field">
                         <label htmlFor="descripcion">Descripcion</label>
                         <input type="text" id="description" onChange={this.handleChange}/>
-                    </div>
+                    </div> */}
 
-                    <div className="input-field"> 
+                    {/* <div className="input-field"> 
                         <label htmlFor="tienda">Tienda</label>
                         <input type="text" id="tienda" onChange={this.handleChange}/>
-                    </div>
+                    </div> */}
 
-                    <div className="input-field"> 
+                    {/* <div className="input-field"> 
                         <label htmlFor="id">Id</label>
                         <input type="id" id="id" onChange={this.handleChange}/>
-                    </div>                   
+                    </div>  */}
+                                    
 
                     <div className="input-field">
                         <button className="btn pink">Añadir</button>
@@ -106,8 +102,6 @@ const mapStateToProps = (state) => {
     
     console.log(state);
     return{
-        
-        
         state
     }
 

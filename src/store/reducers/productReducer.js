@@ -2,8 +2,7 @@
 
 const initState = {
     productos: [
-        {productName: "Gafas", price: "78", description: "basura de gafas", tienda: "Carglass", id: "1"},
-        {productName: "Porro", price: "5", description: "buena mierda del bosque", tienda: "La calle", id: "2"}
+       
     ]
 }
 
@@ -15,10 +14,19 @@ const productReducer = (state = initState , action) => {
     switch(action.type){
         case "CREATE_PRODUCT":
             console.log("created product", action.producto);
-            return state;
+            console.log(action)
+            return {
+                ...state,
+                producto:action.producto
+            }
         case "CREATE_PRODUCT_ERROR":
             console.log("error de creacion", action.err);
             return state;
+        case "SHOW_PRODUCTS":
+            return {
+                ...state,
+                productos: action.productos
+            }
     }
     return state;
 }

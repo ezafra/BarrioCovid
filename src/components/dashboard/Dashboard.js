@@ -8,6 +8,7 @@ import { compose} from "redux"
 import DashboardUser from "./DashboardUser";
 import DashboardVendedor from "./DashboardVendedor";
 import {productos} from "../../datos/productos"
+import { SingIn } from "../auth/SingIn";
 
  class DashBoard extends Component{
      
@@ -24,15 +25,19 @@ import {productos} from "../../datos/productos"
         
         let logged = JSON.parse(localStorage.getItem("registrado"))
         console.log(logged)
-  
-        if( !logged.esVendedor){
-            return(<DashboardUser  productos={products} user = {logged}/>)
-        
-        }
-        else{
-            return(<DashboardVendedor productos={products} />)
+        if(logged ==null){
+            return(<SingIn/>)
+        }else{
+            if( !logged.esVendedor){
+                return(<DashboardUser  productos={products} user = {logged}/>)
             
+            }
+            else{
+                return(<DashboardVendedor productos={products} />)
+                
+            }
         }
+        
 
         
         

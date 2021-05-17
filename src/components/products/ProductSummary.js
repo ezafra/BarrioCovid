@@ -15,7 +15,7 @@ class ProductSummary extends Component {
                     <p> {producto.precio} €</p>
                 
                     <p className="grey-text">18 Abril</p>
-                    <button className="button"
+                    <button className="btn pink"
                     onClick={() => this.props.addToCart(producto)}>
                     <i className="fas fa-shopping-cart"></i>
                     Agregar al Carro 

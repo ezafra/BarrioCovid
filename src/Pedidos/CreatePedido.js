@@ -2,7 +2,7 @@ import React from "react";
 import {Component} from "react";
 
 import { connect } from "react-redux"
-import { CreatePedido} from "../store/actions/pedidoActions"
+import { createPedido} from "../store/actions/pedidoActions"
 
 
 export class CreatePedido extends Component  {
@@ -13,7 +13,7 @@ export class CreatePedido extends Component  {
             idTienda:"",
             idVendedor:"",
             productos:[],
-            isDelivered: true
+            aDomicilio: true
            
             
         }
@@ -47,8 +47,9 @@ export class CreatePedido extends Component  {
     render(){
 
         return(
+            
             <div className="container">
-
+                {console.log(this.props)}
                 <form onSubmit={this.handleSubmit} className="white">
 
                     <h5 className="grey-text text-darken-3">Crear tienda</h5>

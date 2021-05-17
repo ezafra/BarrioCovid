@@ -5,6 +5,7 @@ import { singUp } from "../../store/actions/authActions"
 import { Checkbox } from '@material-ui/core'
 import ToggleButton from 'react-toggle-button'
 import { Redirect } from "react-router";
+import { history } from "../../history/history";
 
 
 
@@ -32,6 +33,10 @@ export class SingUp extends Component {
 
         console.log(this.state);
         this.props.singUp(this.state);
+
+        if (this.state.esVendedor){
+            history.push("/formTienda")
+        }
 
         this.redirect = true;
     }

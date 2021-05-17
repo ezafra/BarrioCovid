@@ -3,6 +3,7 @@ import React from "react";
 
 
 import { Link } from "react-router-dom";
+import { singOut } from "../../store/actions/authActions";
 
  class DashboardVendedor extends Component{
     render(){
@@ -21,7 +22,7 @@ import { Link } from "react-router-dom";
             <div className="col-md-6 col-md-offset-3">
             <h1>Hola {vendedor.name}!</h1>
             <p>Usted está registrado como vendedor</p>
-            <Link to ="/formTienda">Datos de la tienda</Link> 
+            
             
             
             
@@ -57,7 +58,6 @@ import { Link } from "react-router-dom";
         users: state.firestore.ordered.users,
         registered: state.firestore.ordered.registered
     }
-
 } */
 
 

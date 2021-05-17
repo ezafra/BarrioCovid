@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 import { removeFromCart } from '../../store/actions/cartActions';
+import { createPedido } from '../../store/actions/pedidoActions';
 
 class Cart extends Component {
+
+  handlePedido=()=>{
+    const prods = this.props.cart.map((i)=>i.id);
+    this.props.createPedido(prods)
+  }
+
   render() {
     
     console.log(this.props.cart)
@@ -12,11 +20,9 @@ class Cart extends Component {
     try{
       cartList = this.props.cart.map(( producto, index) =>{
         return <div key={index}> 
-          <p style={{ color: "green"}}>
-          {producto.nombre}
-          </p>
+           <span className="card-title">{producto.nombre}</span>
           <p>Precio: {producto.precio} €</p>
-          <button className="button" 
+          <button className="btn pink" 
                   style={{ backgroundColor: "#b73535"}}
                   onClick={ () => this.props.removeFromCart(producto)} > 
                   <i className="fas fa-trash-alt"></i>
@@ -35,7 +41,7 @@ class Cart extends Component {
 
     let totalList=0
     try{
-      totalList=cartList.reduce((sum, product) => sum + product.precio, 0)
+      totalList=this.props.cart.reduce((sum, product) => sum  +  parseFloat(product.precio) , 0)
     }catch(e){
       totalList=0;
 
@@ -56,11 +62,12 @@ class Cart extends Component {
         </div>
         <h2 style={{color:'#476a7b'}}>Total</h2>
         <div>
-          <p style={{ color: "black"}}>(€))
-          <span style={{ color: "blue" ,fontSize:20}}>
-          {totalList}
+        <span style={{ color: "blue" ,fontSize:20}}>
+          {totalList} (€)
           </span>
-          </p>
+          <p></p>
+         
+          <button className="btn pink" onClick={this.props.handlePedido}>Cerrar Pedido</button>
         </div>
       </div>
     );
@@ -77,7 +84,8 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeFromCart: producto => dispatch(removeFromCart(producto))
+        removeFromCart: producto => dispatch(removeFromCart(producto)),
+        createPedido: pedido => dispatch(createPedido(pedido))
     }
 }
 
