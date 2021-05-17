@@ -45,13 +45,14 @@ class ProductView extends React.Component {
 
     handlePedido=()=>{
         console.log(this.props.location)
-
+        const prods=this.props.state.carrito.map((i)=>i.id);
         this.setState({
             redirect:true,
             pedido:{
                 ...this.state.pedido,
                 tienda:this.props.location.state.shop.propietario,
                 estado: 1,
+                productos: prods
 
             }
         })
@@ -61,13 +62,13 @@ class ProductView extends React.Component {
     render() {
         return (
             <div>
-                {console.log(this.props)}
+                
                 <Link to="/dashboard">Volver</Link>
 
                 <ProductList productos={this.props.state.product.productos} />
                 <Cart  handlePedido={this.handlePedido}/>
 
-
+                {console.log(this.props)}
             </div>
         )
     }
