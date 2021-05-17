@@ -1,4 +1,5 @@
 import axios from "axios";
+import { history } from "../../history/history";
 
 export const createPedido = (pedido) => {
     return(dispatch) => {
@@ -10,6 +11,8 @@ export const createPedido = (pedido) => {
         return axios.post("http://localhost:8080/BARRIOCOVIDDD/rest/pedidos", pedido)
         .then(() => {
             dispatch({type: "CREATE_PEDIDO", pedido: pedido})
+            history.push("/dashboard")
+            window.location.reload()
             
         }).catch((err) => {
             dispatch({type: "CREATE_PEDIDO_ERROR", err})
