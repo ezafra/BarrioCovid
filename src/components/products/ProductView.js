@@ -34,7 +34,11 @@ class ProductView extends React.Component {
         this.props.loadProducts(this.props.location.state.shop.propietario)
     }
     componentDidUpdate(){
+        console.log(this.state)
         if(this.state.redirect){
+            console.log("hola")
+            console.log(this.state.redirect)
+            console.log(this.state.pedido)
             this.props.createPedido(this.state.pedido)
         }
     }
@@ -83,7 +87,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loadProducts: (tienda) => dispatch(loadProducts(tienda)),
         showProducts: (tienda) => dispatch(showProducts(tienda)),
-        createPedido: pedido => dispatch(createPedido(pedido))
+        createPedido: (pedido) => dispatch(createPedido(pedido))
 
     }
 

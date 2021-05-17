@@ -6,10 +6,10 @@ import { createPedido } from '../../store/actions/pedidoActions';
 
 class Cart extends Component {
 
-  handlePedido=()=>{
+  /* handlePedido=()=>{
     const prods = this.props.cart.map((i)=>i.id);
     this.props.createPedido(prods)
-  }
+  } */
 
   render() {
     
@@ -67,7 +67,7 @@ class Cart extends Component {
           </span>
           <p></p>
          
-          <button className="btn pink" onClick={this.handlePedido}>Cerrar Pedido</button>
+          <button className="btn pink" onClick={this.props.handlePedido}>Cerrar Pedido</button>
         </div>
       </div>
     );
