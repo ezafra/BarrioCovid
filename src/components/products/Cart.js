@@ -67,7 +67,7 @@ class Cart extends Component {
           </span>
           <p></p>
          
-          <button className="btn pink" onClick={this.props.handlePedido}>Cerrar Pedido</button>
+          <button className="btn pink" onClick={this.handlePedido}>Cerrar Pedido</button>
         </div>
       </div>
     );

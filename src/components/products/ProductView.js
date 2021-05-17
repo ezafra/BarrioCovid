@@ -47,6 +47,7 @@ class ProductView extends React.Component {
             pedido:{
                 ...this.state.pedido,
                 tienda:this.props.location.state.shop.propietario,
+                estado: 1,
 
             }
         })
@@ -56,7 +57,7 @@ class ProductView extends React.Component {
     render() {
         return (
             <div>
-                {console.log()}
+                {console.log(this.props)}
                 <Link to="/dashboard">Volver</Link>
 
                 <ProductList productos={this.props.state.product.productos} />
