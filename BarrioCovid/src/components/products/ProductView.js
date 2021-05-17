@@ -43,21 +43,21 @@ class ProductView extends React.Component {
         }
     }
 
-    handlePedido=()=>{
+   handlePedido=()=>{
         console.log(this.props.location)
-
+        const prods=this.props.state.carrito.map((i)=>i.id);
         this.setState({
             redirect:true,
             pedido:{
                 ...this.state.pedido,
                 tienda:this.props.location.state.shop.propietario,
                 estado: 1,
+                productos: prods
 
             }
         })
         
     }
-
     render() {
         return (
             <div>
